@@ -13,38 +13,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ma.usf.examples.firebase.entity.Person;
-import ma.usf.examples.firebase.service.UserService;
+import ma.usf.examples.firebase.service.PlayerFirebaseService;
 
 @RestController()
-@RequestMapping("/api/users")
-public class UserController {
+@RequestMapping("/api/players")
+public class PlayerController {
 
 	@Autowired
-	private UserService userService;
+//	private PlayerStaticService playerService;
+	private PlayerFirebaseService playerService;
 
 	@GetMapping
 	public List<Person> all() {
-		return userService.getAll();
+		return playerService.getAll();
 	}
 
 	@GetMapping("/{id}")
 	public Person getPlayer(@PathVariable Long id) {
-		return userService.getPlayer(id);
+		return playerService.getPlayer(id);
 	}
 
 	@PostMapping
 	public Person createPlayer(@RequestBody Person person) {
-		return userService.addPlayer(person);
+		return playerService.addPlayer(person);
 	}
 
 	@PutMapping("/{id}")
 	public Person updatePlayer(@PathVariable Long id, @RequestBody Person person) {
-		return userService.updatePlayer(id, person);
+		return playerService.updatePlayer(id, person);
 	}
 
 	@DeleteMapping("/{id}")
 	public boolean deletePlayer(@PathVariable Long id) {
-		return userService.deletePlayer(id);
+		return playerService.deletePlayer(id);
 	}
 
 }

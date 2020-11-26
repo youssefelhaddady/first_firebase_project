@@ -16,11 +16,11 @@ import org.springframework.stereotype.Service;
 import ma.usf.examples.firebase.entity.Person;
 
 @Service
-public class UserService {
+public class PlayerStaticService implements PlayerService {
 
 	private List<Person> playersList;
 
-	public UserService() {
+	public PlayerStaticService() {
 		this.playersList = new ArrayList<>(Arrays.asList(
 				new Person(1, "Lionel Messi", stringToDate("24-06-1987"), 1.7, "Argentina",
 						Arrays.asList("FC Barcelona")),
